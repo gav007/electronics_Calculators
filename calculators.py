@@ -55,6 +55,34 @@ def power(*, voltage: float | None = None, current: float | None = None,
     raise ValueError("Provide any two of voltage, current, and resistance")
 
 
+def series_resistance(*resistances: float) -> float:
+    """Return total resistance for resistors connected in series."""
+    if not resistances or any(value <= 0 for value in resistances):
+        raise ValueError("Provide one or more positive resistances")
+    return sum(resistances)
+
+
+def parallel_resistance(*resistances: float) -> float:
+    """Return total resistance for resistors connected in parallel."""
+    if not resistances or any(value <= 0 for value in resistances):
+        raise ValueError("Provide one or more positive resistances")
+    return 1 / sum(1 / value for value in resistances)
+
+
+def voltage_divider(input_voltage: float, top_resistance: float,
+                    bottom_resistance: float) -> float:
+    """Return the unloaded output voltage of a two-resistor divider."""
+    _positive(input_voltage, "Input voltage")
+    _positive(top_resistance, "Top resistance")
+    _positive(bottom_resistance, "Bottom resistance")
+    return input_voltage * bottom_resistance / (top_resistance + bottom_resistance)
+
+
+def rc_time_constant(resistance: float, capacitance: float) -> float:
+    """Return the RC time constant in seconds."""
+    return _positive(resistance, "Resistance") * _positive(capacitance, "Capacitance")
+
+
 def simulate_rectifier(rectifier_type: str, vrms: float, frequency: float,
                        diode_drop: float, num_cycles: int = 2,
                        steps_per_cycle: int = 200) -> RectifierResult:

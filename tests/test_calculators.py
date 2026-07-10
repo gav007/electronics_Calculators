@@ -2,7 +2,15 @@ from math import isclose
 
 import pytest
 
-from calculators import ohms_law, power, simulate_rectifier
+from calculators import (
+    ohms_law,
+    parallel_resistance,
+    power,
+    rc_time_constant,
+    series_resistance,
+    simulate_rectifier,
+    voltage_divider,
+)
 
 
 def test_ohms_law_calculates_voltage():
@@ -19,6 +27,22 @@ def test_power_uses_voltage_and_current():
 
 def test_power_uses_voltage_and_resistance():
     assert power(voltage=12, resistance=6) == 24
+
+
+def test_series_resistance():
+    assert series_resistance(100, 220, 330) == 650
+
+
+def test_parallel_resistance():
+    assert isclose(parallel_resistance(100, 100), 50)
+
+
+def test_voltage_divider():
+    assert voltage_divider(12, 1000, 1000) == 6
+
+
+def test_rc_time_constant():
+    assert rc_time_constant(1000, 0.000001) == 0.001
 
 
 def test_rectifier_peak_values():

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Electronics Calculators</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <p class="eyebrow">GAV007 / LEARNING TOOLKIT</p>
+      <h1>Electronics Calculators</h1>
+      <p class="intro">Quick, transparent calculations for electronics study. Enter values, press calculate, and check the formula.</p>
+    </header>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Ohm's Law</h2>
+        <p class="formula">V = I × R</p>
+        <div class="fields"><label>Voltage (V)<input id="voltage" type="number" step="any"></label><label>Current (A)<input id="current" type="number" step="any"></label><label>Resistance (Ω)<input id="resistance" type="number" step="any"></label></div>
+        <button data-action="ohms">Calculate missing value</button><output id="ohms-result"></output>
+      </article>
+
+      <article class="card">
+        <h2>Power</h2>
+        <p class="formula">P = V × I</p>
+        <div class="fields"><label>Voltage (V)<input id="power-v" type="number" step="any"></label><label>Current (A)<input id="power-i" type="number" step="any"></label></div>
+        <button data-action="power">Calculate power</button><output id="power-result"></output>
+      </article>
+
+      <article class="card">
+        <h2>Resistors</h2>
+        <p class="formula">Series adds · parallel reduces</p>
+        <label>Values (Ω, comma separated)<input id="resistor-values" value="100, 220, 330"></label>
+        <div class="button-row"><button data-action="series">Series</button><button data-action="parallel">Parallel</button></div><output id="resistor-result"></output>
+      </article>
+
+      <article class="card">
+        <h2>Voltage Divider</h2>
+        <p class="formula">Vout = Vin × R₂ ÷ (R₁ + R₂)</p>
+        <div class="fields"><label>Input (V)<input id="divider-v" type="number" value="12" step="any"></label><label>Top R₁ (Ω)<input id="divider-top" type="number" value="1000" step="any"></label><label>Bottom R₂ (Ω)<input id="divider-bottom" type="number" value="1000" step="any"></label></div>
+        <button data-action="divider">Calculate output</button><output id="divider-result"></output>
+      </article>
+
+      <article class="card">
+        <h2>RC Time Constant</h2>
+        <p class="formula">τ = R × C</p>
+        <div class="fields"><label>Resistance (Ω)<input id="rc-r" type="number" value="1000" step="any"></label><label>Capacitance (F)<input id="rc-c" type="number" value="0.000001" step="any"></label></div>
+        <button data-action="rc">Calculate τ</button><output id="rc-result"></output>
+      </article>
+    </section>
+
+    <footer><p>Educational model only. Do not use this tool as a substitute for qualified supervision or safe test equipment.</p><a href="https://github.com/gav007/electronics_Calculators">View source on GitHub</a></footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -50,11 +50,18 @@ Add `--plot` to display the input and rectified waveforms:
 python3 cli.py rectifier --type full --vrms 24 --frequency 50 --plot
 ```
 
+## Browser demo
+
+A static browser version is available in [`web/`](web/). Open `web/index.html` locally, or use the published demo when GitHub Pages is enabled.
+
+The browser interface includes Ohm's Law, power, series/parallel resistance, voltage divider, and RC time constant calculators.
+
 ## Tests
 
 ```bash
 pytest -q
 ```
+
 
 ## Electrical assumptions
 
